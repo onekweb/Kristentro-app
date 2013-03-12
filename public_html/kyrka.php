@@ -39,13 +39,16 @@
       
             </div>
             <div data-role="content" id="content">
-            	             
+
+<div id="map" style="width:500px;height:500px;"></div>
+            	   
+            	   
                 <h2>
                     Olika församlimgar i Stockholm
                 </h2>
+		<p id="address">Fetching your location with HTML 5 geolocation...</p>
+		<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.se/maps?https://maps.google.se/maps?q=kyrka+n%C3%A4ra+Vanadisv%C3%A4gen,+Stockholm&hl=sv&ie=UTF8&sll=59.326142,17.982052&sspn=0.20387,0.631714&oq=kyrka+n%C3%A4ra+vanadis&hq=kyrka&hnear=Vanadisv%C3%A4gen,+Stockholm&t=m&z=13"></iframe><br /><small><a href="https://maps.google.se/?ie=UTF8&amp;ll=59.326142,17.982052&amp;spn=0.187405,0.631714&amp;t=m&amp;z=11&amp;source=embed" style="color:#0000FF;text-align:left">Visa större karta</a></small>
          		
-         		<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.se/maps?f=q&amp;source=s_q&amp;hl=sv&amp;geocode=&amp;q=f%C3%B6rsamlingar+i+stockholm&amp;aq=&amp;sll=59.322702,18.065962&amp;sspn=0.053775,0.09922&amp;ie=UTF8&amp;hq=f%C3%B6rsamlingar&amp;hnear=Stockholm&amp;t=m&amp;ll=59.314328,18.052231&amp;spn=0.077036,0.069407&amp;output=embed"></iframe><br /><small><a href="https://maps.google.se/maps?f=q&amp;source=embed&amp;hl=sv&amp;geocode=&amp;q=f%C3%B6rsamlingar+i+stockholm&amp;aq=&amp;sll=59.322702,18.065962&amp;sspn=0.053775,0.09922&amp;ie=UTF8&amp;hq=f%C3%B6rsamlingar&amp;hnear=Stockholm&amp;t=m&amp;ll=59.314328,18.052231&amp;spn=0.077036,0.069407" style="color:#0000FF;text-align:left">Visa större karta</a></small> 
-
 
             </div>
                      

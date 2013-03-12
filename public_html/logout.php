@@ -1,4 +1,11 @@
-<?php session_start();?>
+<?php session_start();
+	if(isset($_GET["true"])) {
+					$_SESSION["username"] = null;
+				}
+if(!isset($_SESSION["username"])) {
+	header("Location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,9 +64,7 @@
 					echo  "Hello";
 					
 				}*/
-				if(isset($_GET["true"])) {
-					$_SESSION["username"] = null;
-				}
+			
 				?>
 				<h3>	<a href="logout.php?true">Logga ut</a></h3>
 				<?php
@@ -68,8 +73,6 @@
 					?>
 					
 					<?php
-				} else {
-					header("Location: login.php");
 				}
 	
 			?>	

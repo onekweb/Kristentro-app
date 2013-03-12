@@ -1,8 +1,44 @@
+<?php
+session_start();
+
+$loginError = FALSE;
+if(isset($_POST['submit']))
+	
+	{
+		echo "check";
+		$user = mysql_real_escape_string($_POST['username']);
+		$password = sha1(mysql_real_escape_string($_POST['password']));	
+		$link = mysql_connect("localhost", "root", "m@rio")or die(mysql_error());;
+		$db = mysql_select_db('kristentro');
+		$query = mysql_query("
+		SELECT username 
+		FROM user
+		WHERE username = '$user'
+		AND password = '$password'
+		") or die(mysql_error());
+		$total =  mysql_num_rows($query);
+	
+		if($total > 0)
+		{
+			
+				$_SESSION['username'] = $user;
+				header('location: logout.php');
+		}
+		else 
+		{
+			$loginError = TRUE;
+		}
+		
+		 
+	
+	}
+	if(isset($_SESSION["username"])) {
+		header("Location: logout.php");
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
-
-
-
+	
 <?php
  /* require ("includes/connection/connection.php");*/
 ?>
@@ -48,38 +84,10 @@
             	
             <?php
 	//echo $_REQUEST['attempt'];
-	if(isset($_SESSION["username"])) {
-		header("Location: logout.php");
+	if($loginError) {
+		echo"<p style='color:red;'>Fel användarnamn eller lösenord</p>";
 	}
-	if(isset($_POST['submit']))
 	
-	{
-		$user = mysql_real_escape_string($_POST['username']);
-		$password = sha1(mysql_real_escape_string($_POST['password']));	
-		$link = mysql_connect("localhost", "root", "m@rio")or die(mysql_error());;
-		$db = mysql_select_db('kristentro');
-		$query = mysql_query("
-		SELECT username 
-		FROM user
-		WHERE username = '$user'
-		AND password = '$password'
-		") or die(mysql_error());
-		$total =  mysql_num_rows($query);
-	
-		if($total > 0)
-		{
-				session_start();
-				$_SESSION['username'] = $user;
-				header('location: logout.php');
-		}
-		else 
-		{
-			echo"<p style='color:red;'>Fel användarnamn eller lösenord</p>";
-		}
-		
-		 
-	
-	}
 	 
 ?>	
              <form action="login.php" method="POST">
