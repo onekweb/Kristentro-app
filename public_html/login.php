@@ -88,9 +88,9 @@
             <asp:Literal runat="server" ID="litMessage"></asp:Literal>
 
             <label for="username">Username:</label>
-			<input type="text" name="username" id="username" value="" placeholder="Username"/>
+			<input type="text" name="username" id="username" value="" placeholder="Användarnamn"/>
             <label for="password">Password:</label>
-            <input type="password" name="password" id="password" value="" />
+            <input type="password" name="password" id="password" value="" placeholder="Lösenord" />
 
                 <input id="Submit1" type="submit" name="submit" value="Login" data-role="button" data-inline="true" data-theme="b" />
 
