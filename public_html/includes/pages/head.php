@@ -20,43 +20,47 @@ if(session_id() == '') {
 <script src="http://maps.google.com/maps?file=api&v=2&sensor=false&key=AIzaSyBEeTuHBJty5SjERigmMnjINuIp1vMi_2E" typ
 e="text/javascript"></script>
 
-<script>
-if(navigator.geolocation) {
-	navigator.geolocation.getCurrentPosition(
-		function(position) {
-			//alert(position.coords.latitude + "," + position.coords.longitude);
-			showOnMap(position.coords.latitude, position.coords.longitude);
-		}
-	);
-}
 
-var map;
-var mapCenter
-var geocoder;
-var fakeLatitude;
-var fakeLongitude;
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
-function showOnMap(latitude, longitude) {
-	var mapCenter = new GLatLng(latitude, longitude);
-	map = new GMap2(document.getElementById("map"));
-	map.setCenter(mapCenter, 15);
-	map.addOverlay(new GMarker(mapCenter));
+    <script type="text/javascript">
 
-	geocoder = new GClientGeocoder();
-	geocoder.getLocations(latitude+','+longitude, addAddressToMap)
-}
+        $(document).ready(function() {
 
-function addAddressToMap(response)
-{
-	if (!response || response.Status.code != 200) {
-		alert("Sorry, we were unable to geocode that address");
-	} else {
-		place = response.Placemark[0];
-		$('#address').html('Your address: '+place.address);
-	}
-}
+            $('#findme').click(function() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(success, error);
+                } else {
+                    error('Geolocation not supported');
+                }
+            });
+        });  
 
-</script>
+
+        function success(position) {
+          var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+          var myOptions = {
+            zoom: 15,
+            center: latlng,
+            mapTypeControl: false,
+            navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          var mapcanvas = $('#mapcanvas');
+          var map = new google.maps.Map(mapcanvas[0], myOptions);
+          var marker = new google.maps.Marker({
+              position: latlng, 
+              map: map, 
+              title:"I am here!"
+          });
+        }
+        
+
+        function error(msg) {
+          var errMsg = typeof msg == 'string' ? msg : "Geolocation failed";
+          $('#msg').html(errMsg);
+        }
+    </script>
 
         <script src="js/main.js">
         </script>

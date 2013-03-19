@@ -27,7 +27,10 @@ $("#filter").keyup(function(){
  
             // Show the list item if the phrase matches and increase the count by 1
             } else {
-                $(this).show();
+                $(this).show(function(){
+                	
+                	$(this).css("color:red;")
+                });
                 count++;
             }
         });

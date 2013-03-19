@@ -43,9 +43,6 @@ if(isset($_POST['submit']))
  /* require ("includes/connection/connection.php");*/
 ?>
 
-<?php
-  include_once("includes/pages/head.php");
-?>
 
   <body>
 
